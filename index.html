@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Dakarlaton - Find Your Next Job</title>
+  <meta name="description" content="Dakarlaton - Find jobs, explore career opportunities and connect with employers.">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f7f9fc;
+      color: #172033;
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    /* Header */
+    header {
+      background: #ffffff;
+      border-bottom: 1px solid #e8ebf0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .nav {
+      max-width: 1150px;
+      margin: auto;
+      padding: 18px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 27px;
+      font-weight: 800;
+      color: #6c2bd9;
+      letter-spacing: -1px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: #344054;
+      font-weight: 600;
+    }
+
+    .nav-links a:hover {
+      color: #6c2bd9;
+    }
+
+    .post-btn {
+      background: #6c2bd9;
+      color: white !important;
+      padding: 11px 18px;
+      border-radius: 8px;
+    }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(135deg, #5420b8, #7b3fe4);
+      color: white;
+      padding: 85px 20px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 52px;
+      line-height: 1.1;
+      margin-bottom: 18px;
+    }
+
+    .hero p {
+      font-size: 19px;
+      opacity: 0.92;
+      margin-bottom: 35px;
+    }
+
+    .search-box {
+      max-width: 850px;
+      margin: auto;
+      background: white;
+      padding: 10px;
+      border-radius: 12px;
+      display: flex;
+      gap: 10px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.18);
+    }
+
+    .search-box input {
+      flex: 1;
+      border: none;
+      outline: none;
+      padding: 15px;
+      font-size: 16px;
+      color: #333;
+    }
+
+    .search-btn {
+      border: none;
+      background: #111827;
+      color: white;
+      padding: 0 28px;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    /* Main */
+    .container {
+      max-width: 1150px;
+      margin: auto;
+      padding: 60px 20px;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 35px;
+    }
+
+    .section-title h2 {
+      font-size: 32px;
+      margin-bottom: 8px;
+    }
+
+    .section-title p {
+      color: #667085;
+    }
+
+    /* Jobs */
+    .jobs {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .job-card {
+      background: white;
+      border: 1px solid #e6e9ef;
+      border-radius: 12px;
+      padding: 25px;
+      transition: 0.2s;
+    }
+
+    .job-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+    }
+
+    .job-card h3 {
+      font-size: 20px;
+      margin-bottom: 8px;
+    }
+
+    .company {
+      color: #6c2bd9;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    .details {
+      color: #667085;
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+
+    .details span {
+      display: block;
+      margin: 5px 0;
+    }
+
+    .apply {
+      display: inline-block;
+      background: #6c2bd9;
+      color: white;
+      padding: 10px 18px;
+      border-radius: 7px;
+      font-weight: bold;
+    }
+
+    /* Categories */
+    .categories {
+      background: white;
+      padding: 60px 20px;
+    }
+
+    .category-grid {
+      max-width: 1000px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .category {
+      border: 1px solid #e5e7eb;
+      padding: 25px;
+      border-radius: 10px;
+      text-align: center;
+      font-weight: bold;
+      background: #fafafa;
+    }
+
+    .category:hover {
+      border-color: #6c2bd9;
+      color: #6c2bd9;
+    }
+
+    /* About */
+    .about {
+      max-width: 850px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .about p {
+      color: #667085;
+      font-size: 17px;
+    }
+
+    /* Footer */
+    footer {
+      background: #111827;
+      color: white;
+      padding: 45px 20px;
+      margin-top: 30px;
+    }
+
+    .footer-content {
+      max-width: 1150px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
+    .footer-logo {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .footer-text {
+      color: #b7bfcc;
+      max-width: 400px;
+    }
+
+    .footer-links a {
+      color: #d1d5db;
+      margin-left: 20px;
+    }
+
+    .copyright {
+      max-width: 1150px;
+      margin: 30px auto 0;
+      padding-top: 20px;
+      border-top: 1px solid #374151;
+      color: #9ca3af;
+      font-size: 14px;
+    }
+
+    /* Mobile */
+    @media (max-width: 800px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero h1 {
+        font-size: 38px;
+      }
+
+      .search-box {
+        flex-direction: column;
+      }
+
+      .search-btn {
+        padding: 15px;
+      }
+
+      .jobs {
+        grid-template-columns: 1fr;
+      }
+
+      .category-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .footer-content {
+        flex-direction: column;
+      }
+
+      .footer-links a {
+        margin: 0 15px 0 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <header>
+    <nav class="nav">
+      <div class="logo">Dakarlaton</div>
+
+      <div class="nav-links">
+        <a href="#jobs">Find Jobs</a>
+        <a href="#categories">Categories</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+        <a href="#post" class="post-btn">Post a Job</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <h1>Find Your Next Opportunity</h1>
+    <p>Discover jobs, connect with employers and build your future with Dakarlaton.</p>
+
+    <div class="search-box">
+      <input type="text" id="jobSearch" placeholder="Search job title, company or keyword">
+      <input type="text" id="locationSearch" placeholder="Location">
+      <button class="search-btn" onclick="searchJobs()">Search Jobs</button>
+    </div>
+  </section>
+
+  <!-- Jobs -->
+  <main id="jobs" class="container">
+
+    <div class="section-title">
+      <h2>Latest Job Opportunities</h2>
+      <p>Explore some of the latest opportunities available.</p>
+    </div>
+
+    <div class="jobs" id="jobList">
+
+      <div class="job-card" data-title="Software Developer" data-location="Remote">
+        <h3>Software Developer</h3>
+        <div class="company">Technology Company</div>
+
+        <div class="details">
+          <span>📍 Remote</span>
+          <span>💼 Full Time</span>
+          <span>💰 Competitive Salary</span>
+        </div>
+
+        <a href="mailto:jobs@dakarlaton.com?subject=Application - Software Developer" class="apply">
+          Apply Now
+        </a>
+      </div>
+
+      <div class="job-card" data-title="Marketing Specialist" data-location="Riyadh">
+        <h3>Marketing Specialist</h3>
+        <div class="company">Growing Business</div>
+
+        <div class="details">
+          <span>📍 Riyadh</span>
+          <span>💼 Full Time</span>
+          <span>💰 Competitive Salary</span>
+        </div>
+
+        <a href="mailto:jobs@dakarlaton.com?subject=Application - Marketing Specialist" class="apply">
+          Apply Now
+        </a>
+      </div>
+
+      <div class="job-card" data-title="Project Manager" data-location="Jeddah">
+        <h3>Project Manager</h3>
+        <div class="company">International Company</div>
+
+        <div class="details">
+          <span>📍 Jeddah</span>
+          <span>💼 Full Time</span>
+          <span>💰 Competitive Salary</span>
+        </div>
+
+        <a href="mailto:jobs@dakarlaton.com?subject=Application - Project Manager" class="apply">
+          Apply Now
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Categories -->
+  <section id="categories" class="categories">
+
+    <div class="section-title">
+      <h2>Popular Job Categories</h2>
+      <p>Find opportunities in your area of expertise.</p>
+    </div>
+
+    <div class="category-grid">
+      <div class="category">Technology</div>
+      <div class="category">Engineering</div>
+      <div class="category">Marketing</div>
+      <div class="category">Finance</div>
+      <div class="category">Healthcare</div>
+      <div class="category">Construction</div>
+      <div class="category">Sales</div>
+      <div class="category">Administration</div>
+    </div>
+
+  </section>
+
+  <!-- About -->
+  <section id="about" class="container">
+
+    <div class="about">
+      <div class="section-title">
+        <h2>About Dakarlaton</h2>
+      </div>
+
+      <p>
+        Dakarlaton is a job platform designed to help job seekers discover
+        opportunities and help employers connect with talented people.
+        Our goal is to make finding the right opportunity simple, accessible
+        and convenient.
+      </p>
+    </div>
+
+  </section>
+
+  <!-- Footer -->
+  <footer id="contact">
+
+    <div class="footer-content">
+
+      <div>
+        <div class="footer-logo">Dakarlaton</div>
+        <div class="footer-text">
+          Connecting people with better career opportunities.
+        </div>
+      </div>
+
+      <div class="footer-links">
+        <a href="#jobs">Jobs</a>
+        <a href="#about">About</a>
+        <a href="mailto:info@dakarlaton.com">Contact</a>
+      </div>
+
+    </div>
+
+    <div class="copyright">
+      © 2026 Dakarlaton. All rights reserved.
+    </div>
+
+  </footer>
+
+  <!-- Search Function -->
+  <script>
+    function searchJobs() {
+
+      const keyword = document
+        .getElementById("jobSearch")
+        .value
+        .toLowerCase();
+
+      const location = document
+        .getElementById("locationSearch")
+        .value
+        .toLowerCase();
+
+      const jobs = document.querySelectorAll(".job-card");
+
+      jobs.forEach(function(job) {
+
+        const title = job.dataset.title.toLowerCase();
+        const jobLocation = job.dataset.location.toLowerCase();
+
+        const matchesKeyword =
+          keyword === "" || title.includes(keyword);
+
+        const matchesLocation =
+          location === "" || jobLocation.includes(location);
+
+        if (matchesKeyword && matchesLocation) {
+          job.style.display = "block";
+        } else {
+          job.style.display = "none";
+        }
+
+      });
+    }
+  </script>
+
+</body>
+</html>
